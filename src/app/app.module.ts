@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     UserListComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,HttpClientModule
