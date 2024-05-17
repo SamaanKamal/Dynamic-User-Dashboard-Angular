@@ -8,6 +8,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
     LoadingSpinnerComponent
   ],
   imports: [
-    BrowserModule,HttpClientModule,AppRoutingModule
+    BrowserModule,HttpClientModule,AppRoutingModule,FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
