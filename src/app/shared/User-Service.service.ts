@@ -11,24 +11,21 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  fetchUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.url+'?page={page}').pipe(
+  fetchUsers(pageNumber: number): Observable<any> {
+    return this.http.get<any>(this.url + `?page=${pageNumber}`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
         return of([]);
       })
     );
   }
-  fetchUser(userId: number) {
-    return this.http.get<User>(this.url + '/' + userId).pipe(
+  fetchUser(userId: number): Observable<any> {
+    return this.http.get<any>(this.url + '/' + userId).pipe(
       map((users) => {
         return users;
       }),
       catchError((error) => {
-        console.error(
-          'Error fetching user: ',
-          error + ' with id : ' + userId
-        );
+        console.error('Error fetching user: ', error + ' with id : ' + userId);
         return throwError(() => {
           const newError = new Error(
             'Error fetching user:' + error + ' with id : ' + userId
