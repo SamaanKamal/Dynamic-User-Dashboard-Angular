@@ -1,1 +1,28 @@
-<p>user-list works!</p>
+<div class="user-list-container">
+  <div *ngIf="users.length <= 0">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div *ngIf="users.length>0">
+    <div *ngFor="let user of users" class="user-card">
+      <!-- <img class="user-avatar" [src]="user.avatar" /> -->
+      <div class="user-info">
+        <h1>User ID: {{ user.user }}</h1>
+        <p class="user-name">{{ user.first_name }} {{ user.last_name }}</p>
+        <div>{{ user.email }}</div>
+      </div>
+      <button (click)="viewDetails(user.id)">View Details</button>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <button
+      *ngIf="currentPage > 1"
+      (click)="onPageChange(currentPage - 1)"
+      [disabled]="currentPage === 1"
+    >
+      Previous Page
+    </button>
+    <span>Page {{ currentPage }}</span>
+    <button (click)="onPageChange(currentPage + 1)">Next Page</button>
+  </div>
+</div>
