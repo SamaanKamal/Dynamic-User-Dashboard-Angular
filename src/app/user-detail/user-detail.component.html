@@ -1,1 +1,12 @@
-<p>user-detail works!</p>
+<div class="user-details">
+    <div *ngIf="user">
+      <div class="avatar">
+        <img [src]="user.avatar" alt="Avatar">
+      </div>
+      <div class="user-info">
+        <div>{{ user.first_name }} {{ user.last_name }}</div>
+        <div>{{ user.email }}</div>
+        <button (click)="goBack()">Back</button>
+      </div>
+    </div>
+  </div>
