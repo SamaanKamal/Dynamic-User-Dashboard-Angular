@@ -1,4 +1,6 @@
 <header>
     <h1>User Dashboard</h1>
+    <input type="text" placeholder="Search by ID" [(ngModel)]="searchQuery" (input)="search()">
+    <p *ngIf="error&&searchQuery.length>0">{{error}}</p>
 </header>
   
