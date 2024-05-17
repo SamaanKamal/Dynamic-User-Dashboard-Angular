@@ -21,8 +21,10 @@ export class UserListComponent implements OnInit {
   }
 
   getUsers() {
+    this.isLoading = true;
     this.userService.fetchUsers(this.currentPage).subscribe({
       next: (responseData) => {
+        this.isLoading = false;
         this.users = responseData.data;
         console.log(responseData.data);
       },
@@ -38,6 +40,6 @@ export class UserListComponent implements OnInit {
   }
 
   viewDetails(id: number) {
-    this.router.navigate(['/users',id])
+    this.router.navigate(['/user',id])
   }
 }

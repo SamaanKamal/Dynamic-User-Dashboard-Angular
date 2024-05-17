@@ -1,12 +1,12 @@
 <div class="user-list-container">
-  <div *ngIf="users.length <= 0">
+  <div *ngIf="users.length <= 0&&isLoading">
     <app-loading-spinner></app-loading-spinner>
   </div>
-  <div *ngIf="users.length>0">
+  <div *ngIf="users.length>0&&!isLoading">
     <div *ngFor="let user of users" class="user-card">
       <!-- <img class="user-avatar" [src]="user.avatar" /> -->
       <div class="user-info">
-        <h1>User ID: {{ user.user }}</h1>
+        <h1>User ID: {{ user.id }}</h1>
         <p class="user-name">{{ user.first_name }} {{ user.last_name }}</p>
         <div>{{ user.email }}</div>
       </div>
@@ -23,6 +23,6 @@
       Previous Page
     </button>
     <span>Page {{ currentPage }}</span>
-    <button (click)="onPageChange(currentPage + 1)">Next Page</button>
+    <button (click)="onPageChange(currentPage + 1)" *ngIf="currentPage < 2">Next Page</button>
   </div>
 </div>
