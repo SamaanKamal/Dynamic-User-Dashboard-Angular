@@ -1,12 +1,18 @@
 <div class="user-details">
-    <div *ngIf="user">
-      <div class="avatar">
-        <img [src]="user.avatar" alt="Avatar">
-      </div>
-      <div class="user-info">
-        <div>{{ user.first_name }} {{ user.last_name }}</div>
-        <div>{{ user.email }}</div>
-        <button (click)="goBack()">Back</button>
-      </div>
+  <div *ngIf="isLoading&&!error">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div *ngIf="user&&!error&&!isLoading">
+    <div class="avatar">
+      <img [src]="user.avatar" alt="Avatar" />
+    </div>
+    <div class="user-info">
+      <div>{{ user.first_name }} {{ user.last_name }}</div>
+      <div>{{ user.email }}</div>
+      <button (click)="goBack()">Back</button>
     </div>
   </div>
+  <div *ngIf="!user">
+    <p>{{ error }}</p>
+  </div>
+</div>
