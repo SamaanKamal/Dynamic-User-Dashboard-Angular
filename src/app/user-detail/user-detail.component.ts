@@ -28,9 +28,12 @@ export class UserDetailComponent implements OnInit {
   }
 
   getUser() {
+    this.isLoading = true;
     this.userService.fetchUser(this.userId).subscribe({
       next: (responseData) => {
+        this.isLoading = false;
         this.user = responseData.data;
+        this.userService.setUser(this.user);
         console.log(responseData.data);
       },
       error: (errorMessage) => {
